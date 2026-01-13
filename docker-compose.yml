@@ -1,1 +1,31 @@
 
+version: '3.8'
+
+services:
+  auth-service:
+    container_name: auth-container
+    build: ./auth-service
+    ports:
+      - "5001:3000"
+    networks:
+      - app-network
+
+  product-service:
+    container_name: product-container
+    build: ./product-service
+    ports:
+      - "5002:3001"
+    networks:
+      - app-network
+
+  commande-service:
+    container_name: commande-container
+    build: ./commande-service
+    ports:
+      - "5003:3002"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
